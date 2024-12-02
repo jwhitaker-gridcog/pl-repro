@@ -17,6 +17,7 @@ def main():
         }
     )
 
+    df = df.filter(pl.col("RawDatetime").is_not_null() & (pl.col("RawDatetime") != ""))
     # parse datetime strings
     dt_str = (
         df.get_column("RawDatetime")
