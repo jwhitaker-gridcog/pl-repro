@@ -1,17 +1,9 @@
-[tool.poetry]
+[project]
 name = "pl-repro"
 version = "0.1.0"
-description = ""
-authors = [
-	"Jarrad Whitaker <155397737+jwhitaker-gridcog@users.noreply.github.com>",
-]
+description = "Add your description here"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-polars = "^1.16.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.12"
+dependencies = [
+    "polars>=1.16.0",
+]
