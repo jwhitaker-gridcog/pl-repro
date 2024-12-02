@@ -11,11 +11,18 @@ def main():
                 interval="30m",
                 closed="both",
                 eager=True,
-            ).cast(pl.String()),
+            ),
             "GensetkWh": [1, 2, 3],
             "Emissions": [1, 0, 1],
         }
     )
+
+    def cols():
+        yield df.get_column("RawDatetime").cast(pl.String())
+        yield df.get_column("GensetkWh").cast(pl.Float64())
+        yield df.get_column("Emissions").cast(pl.Float64())
+
+    df = pl.DataFrame(c for c in cols())
 
     df = df.filter(pl.col("RawDatetime").is_not_null() & (pl.col("RawDatetime") != ""))
     # parse datetime strings
